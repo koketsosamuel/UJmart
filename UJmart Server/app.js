@@ -29,6 +29,7 @@ app.use(cors())
 
 
 // MONGO CONNECT
+mongoose.set('useCreateIndex', true);
 mongoose.connect(config.dbConnStr, {useNewUrlParser: true})
 
 // STATIC FOLDER SETUP
@@ -45,12 +46,12 @@ app.use("/api/totals", total)
 app.use(express.static("./client"))
 app.use(/.*/, (req, res) => {
 
-  res.sendFile("./client/index.html")
+  res.sendFile(__dirname + "/client/index.html")
 
 })
 
 // services
-folderClean('upload/temp')
+folderClean(config.uploadDirTemp)
 removeExpired()
 
 let port  = process.env.PORT || config.serverPort

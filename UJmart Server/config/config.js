@@ -10,6 +10,6 @@ module.exports = {
     dbConnStr: "mongodb://127.0.0.1:27017/ujm",
     tokenKey: "k0k3t$005653876",
     emailTokenKey: "k0k3t$005653876@email",
-    uploadDirTemp: "../public/upload/temp",
-    uploadDir: "../public/upload/images"
+    uploadDirTemp: "./upload/temp",
+    uploadDir: "./upload/images"
   }

@@ -1,12 +1,12 @@
 const multer = require("multer")
-
+const config = require("../config/config")
 
 
 const multerStorage = multer.diskStorage({
 
   destination: (req, file, cb) => {
 
-    let dir = '../public/upload/temp'
+    let dir = config.uploadDirTemp
     cb(null, dir)
 
   },

@@ -241,8 +241,10 @@ module.exports = {
     Ad.findOne({_id: req.params.id}, (err, ad) => {
 
       if (err || ad.images.length >= 6) {
+
         imageRemove(req.file.path)
         res.json({message: "Error uploading picture", error: true, err})
+        
       } else {
 
         imageResize(req.file.path, config.uploadDir+req.file.filename)
@@ -251,6 +253,7 @@ module.exports = {
         Ad.updateOne({_id: req.params.id}, update, err => {
 
           if(err) {
+            console.log(err)
             res.json({message: "Error uploading picture", error: true, err})
           } else {
             res.json({message: "Picture uploaded", error: false, image})        
